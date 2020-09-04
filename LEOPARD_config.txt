@@ -1,0 +1,59 @@
+
+LEOPARD>em nable 
+Password: 
+Password: 
+Password: 
+% Password:  timeout expired!
+% Bad secrets
+
+LEOPARD>enabke
+Translating "enabke"...domain server (255.255.255.255)
+% Unknown command or computer name, or unable to find computer address
+LEOPARD>
+LEOPARD>
+LEOPARD>
+LEOPARD>
+LEOPARD>
+LEOPARD>enable
+Password: 
+Password: 
+Password: 
+% Bad secrets
+
+LEOPARD>enable
+Password: 
+Password: 
+Password: 
+% Password:  timeout expired!
+% Bad secrets
+
+LEOPARD>?
+Exec commands:
+  access-enable    Create a temporary Access-List entry
+  clear            Reset functions
+  connect          Open a terminal connection
+  crypto           Encryption related commands.
+  disable          Turn off privileged commands
+  disconnect       Disconnect an existing network connection
+  enable           Turn on privileged commands
+  exit             Exit from the EXEC
+  help             Description of the interactive help system
+  lock             Lock the terminal
+  login            Log in as a particular user
+  logout           Exit from the EXEC
+  name-connection  Name an existing network connection
+  ping             Send echo messages
+  rcommand         Run command on remote switch
+  resume           Resume an active network connection
+  set              Set system parameter (not config)
+  show             Show running system information
+  ssh              Open a secure shell client connection
+  systat           Display information about terminal lines
+  telnet           Open a telnet connection
+ --More--           terminal         Set terminal line parameters
+ --More--           traceroute       Trace route to destination
+ --More--           tunnel           Open a tunnel connection
+ --More--           where            List active connections
+ --More--         
+LEOPARD>
+LEOPARD>

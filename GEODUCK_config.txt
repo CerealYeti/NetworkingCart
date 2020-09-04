@@ -1,0 +1,386 @@
+
+% Type "show ?" for a list of subcommands
+GEODUCK#show configuration
+Using 2624 out of 524288 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname GEODUCK
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip routing
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-262443648
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-262443648
+ --More--          revocation-check none
+ rsakeypair TP-self-signed-262443648
+ --More--         !
+!
+ --More--         crypto pki certificate chain TP-self-signed-262443648
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+ --More--         !
+!
+ --More--         !
+spanning-tree mode pvst
+ --More--         spanning-tree extend system-id
+!
+ --More--         vlan internal allocation policy ascending
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+interface FastEthernet0/1
+ --More--          switchport access vlan 300
+!
+ --More--         interface FastEthernet0/2
+ switchport access vlan 300
+ --More--         !
+interface FastEthernet0/3
+ --More--          switchport access vlan 300
+!
+ --More--         interface FastEthernet0/4
+ switchport access vlan 300
+ --More--         !
+interface FastEthernet0/5
+ --More--          switchport access vlan 300
+!
+ --More--         interface FastEthernet0/6
+ switchport access vlan 300
+ --More--         !
+interface FastEthernet0/7
+ --More--          switchport access vlan 300
+!
+ --More--         interface FastEthernet0/8
+ switchport access vlan 300
+ --More--         !
+interface FastEthernet0/9
+ --More--          switchport access vlan 300
+!
+ --More--         interface FastEthernet0/10
+ switchport access vlan 300
+ --More--         !
+interface FastEthernet0/11
+ --More--          switchport access vlan 400
+!
+ --More--         interface FastEthernet0/12
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/13
+ --More--          switchport access vlan 400
+!
+ --More--         interface FastEthernet0/14
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/15
+ --More--          switchport access vlan 400
+!
+ --More--         interface FastEthernet0/16
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/17
+ --More--          switchport access vlan 400
+!
+ --More--         interface FastEthernet0/18
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/19
+ --More--          switchport access vlan 400
+!
+ --More--         interface FastEthernet0/20
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/21
+ --More--         !
+interface FastEthernet0/22
+ --More--          no switchport
+ no ip address
+ --More--         !
+interface FastEthernet0/23
+ --More--          no switchport
+ ip address 10.254.253.235 255.255.255.248
+ --More--          ip rip send version 2
+ ip rip receive version 2
+ --More--         !
+interface FastEthernet0/24
+ --More--          switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 300,400,520,540
+ --More--          switchport mode trunk
+!
+ --More--         interface GigabitEthernet0/1
+!
+ --More--         interface GigabitEthernet0/2
+!
+ --More--         interface Vlan1
+ no ip address
+ --More--          shutdown
+!
+ --More--         interface Vlan520
+ ip address 10.254.253.228 255.255.255.248
+ --More--         !
+interface Vlan540
+ --More--          ip address 10.254.253.219 255.255.255.248
+!
+ --More--         router rip
+ version 2
+ --More--          network 10.0.0.0
+ neighbor 10.254.253.233
+ --More--          neighbor 10.254.253.234
+ no auto-summary
+ --More--         !
+ip http server
+ --More--         ip http secure-server
+!
+ --More--         !
+logging esm config
+ --More--         !
+!
+ --More--         line con 0
+line vty 0 4
+ --More--          login
+line vty 5 15
+ --More--          login
+!
+ --More--         end
+
+GEODUCK#
+GEODUCK#show vlan 300
+                  ^
+% Invalid input detected at '^' marker.
+
+GEODUCK#show vlan 300v300l300a300n300 300300 300 300 300 300 300 0 5020
+                  ^
+% Invalid input detected at '^' marker.
+
+GEODUCK#show vlan 520      
+GEODUCK#show vlan 
+GEODUCK#show vlan 
+GEODUCK#show vlan ?
+  access-log    VACL Logging
+  access-map    Vlan access-map
+  brief         VTP all VLAN status in brief
+  dot1q         Display dot1q parameters
+  filter        VLAN filter information
+  group         VLAN group(s) information
+  id            VTP VLAN status by VLAN id
+  ifindex       SNMP ifIndex
+  internal      VLAN internal usage
+  mtu           VLAN MTU information
+  name          VTP VLAN status by VLAN name
+  private-vlan  Private VLAN information
+  remote-span   Remote SPAN VLANs
+  summary       VLAN summary information
+  |             Output modifiers
+  <cr>
+
+GEODUCK#show vlan vlan      
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Gi0/1, Gi0/2
+300  VLAN0300                         active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+400  VLAN0400                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20
+520  manage-razor-little              active    
+530  routing-horse-butter             active    
+540  routing-razor-little             active    
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+300  enet  100300     1500  -      -      -        -    -        0      0   
+400  enet  100400     1500  -      -      -        -    -        0      0   
+520  enet  100520     1500  -      -      -        -    -        0      0   
+ --More--         530  enet  100530     1500  -      -      -        -    -        0      0   
+540  enet  100540     1500  -      -      -        -    -        0      0   
+ --More--         1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+ --More--         1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+ --More--         
+Remote SPAN VLANs
+ --More--         ------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#h show vlan   VLA   manage-razor-l
+GEODUCK#show vlan manage-razor-little
+                   ^
+% Invalid input detected at '^' marker.
+
+GEODUCK#show vlan manage-razor-little                   VLAN0400
+                  ^
+% Invalid input detected at '^' marker.
+
+GEODUCK#show vlan VLAN0400        manage-razor-little                   520300configuration                configureshow configuration                configure[B       configureenable   configure[B       configureshow      configuration configure          sh       ow configurationvlan 300     520   manage-razor-littleVLAN0400                             show vlan VLAN0400manage-razor-little                   520300configuration                configureshow configuration                configure[B       configureenable   show jjhow vlan               
+GEODUCK#show vlan ?
+  access-log    VACL Logging
+  access-map    Vlan access-map
+  brief         VTP all VLAN status in brief
+  dot1q         Display dot1q parameters
+  filter        VLAN filter information
+  group         VLAN group(s) information
+  id            VTP VLAN status by VLAN id
+  ifindex       SNMP ifIndex
+  internal      VLAN internal usage
+  mtu           VLAN MTU information
+  name          VTP VLAN status by VLAN name
+  private-vlan  Private VLAN information
+  remote-span   Remote SPAN VLANs
+  summary       VLAN summary information
+  |             Output modifiers
+  <cr>
+
+GEODUCK#show vlan s=  id 
+GEODUCK#show vlan id 300
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+300  VLAN0300                         active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+300  enet  100300     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#show vlan id 400
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+400  VLAN0400                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+400  enet  100400     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#show vlan id 520
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+520  manage-razor-little              active    Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+520  enet  100520     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#shwo    ow vlan id 540
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+540  routing-razor-little             active    Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+540  enet  100540     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#shwo    ow vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Gi0/1, Gi0/2
+300  VLAN0300                         active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+400  VLAN0400                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20
+520  manage-razor-little              active    
+530  routing-horse-butter             active    
+540  routing-razor-little             active    
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+300  enet  100300     1500  -      -      -        -    -        0      0   
+400  enet  100400     1500  -      -      -        -    -        0      0   
+520  enet  100520     1500  -      -      -        -    -        0      0   
+ --More--         530  enet  100530     1500  -      -      -        -    -        0      0   
+540  enet  100540     1500  -      -      -        -    -        0      0   
+ --More--         1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+ --More--         1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+ --More--         
+Remote SPAN VLANs
+ --More--         ------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#show vlan 530i530d530 530
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+530  routing-horse-butter             active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+530  enet  100530     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+GEODUCK#

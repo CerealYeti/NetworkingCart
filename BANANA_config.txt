@@ -1,0 +1,260 @@
+
+BANANA>enable
+BANANA#show config
+BANANA#show configuration 
+Using 2509 out of 65536 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname BANANA
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip subnet-zero
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2439728896
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2439728896
+ --More--          revocation-check none
+ --More--          rsakeypair TP-self-signed-2439728896
+ --More--         !
+ --More--         !
+ --More--         crypto pki certificate chain TP-self-signed-2439728896
+ --More--          certificate self-signed 01 nvram:IOS-Self-Sig#3601.cer
+ --More--         !
+ --More--         !
+ --More--         !
+ --More--         !
+ --More--         !
+ --More--         spanning-tree mode pvst
+ --More--         spanning-tree extend system-id
+ --More--         !
+ --More--         vlan internal allocation policy ascending
+ --More--         !
+ --More--         !
+ --More--         !
+ --More--         interface FastEthernet0/1
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/2
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/3
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/4
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/5
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/6
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/7
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/8
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/9
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/10
+ --More--          switchport access vlan 100
+ --More--         !
+ --More--         interface FastEthernet0/11
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/12
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/13
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/14
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/15
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/16
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/17
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/18
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/19
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/20
+ --More--          switchport access vlan 200
+ --More--         !
+ --More--         interface FastEthernet0/21
+ --More--         !
+ --More--         interface FastEthernet0/22
+ --More--          switchport access vlan 530
+ --More--          switchport mode access
+ --More--         !
+ --More--         interface FastEthernet0/23
+ --More--          switchport trunk allowed vlan 100,200,510,530
+ --More--          switchport mode trunk
+ --More--         !
+ --More--         interface FastEthernet0/24
+ --More--          switchport trunk allowed vlan 100,200,510,530
+ --More--          switchport mode trunk
+ --More--         !
+ --More--         interface GigabitEthernet0/1
+ --More--         !
+ --More--         interface GigabitEthernet0/2
+ --More--         !
+ --More--         interface Vlan1
+ --More--          no ip address
+ --More--          no ip route-cache
+ --More--         !
+ --More--         interface Vlan510
+ --More--          ip address 10.254.253.243 255.255.255.248
+ --More--          no ip route-cache
+ --More--         !
+ --More--         ip http server
+ --More--         ip http secure-server
+ --More--         !
+ --More--         control-plane
+ --More--         !
+ --More--         !
+ --More--         line con 0
+ --More--         line vty 0 4
+ --More--          login
+ --More--         line vty 5 15
+ --More--          login
+ --More--         !
+ --More--         !
+ --More--         monitor session 1 source vlan 100
+ --More--         monitor session 1 destination interface Fa0/21
+ --More--         end
+ --More--         
+BANANA#
+BANANA#
+BANANA#show vla an
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi0/1, Gi0/2
+100  VLAN0100                         active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+200  VLAN0200                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20
+510  management                       active    
+530  routing                          active    Fa0/22
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+100  enet  100100     1500  -      -      -        -    -        0      0   
+200  enet  100200     1500  -      -      -        -    -        0      0   
+510  enet  100510     1500  -      -      -        -    -        0      0   
+ --More--         530  enet  100530     1500  -      -      -        -    -        0      0   
+ --More--         1002 fddi  101002     1500  -      -      -        -    -        0      0   
+ --More--         1003 tr    101003     1500  -      -      -        -    -        0      0   
+ --More--         1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+ --More--         1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+ --More--         
+ --More--         Remote SPAN VLANs
+ --More--         ------------------------------------------------------------------------------
+ --More--         
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+BANANA#show l vlan id 11 00
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+100  VLAN0100                         active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/23, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+100  enet  100100     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+BANANA#show vlan id 100   200
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+200  VLAN0200                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20, Fa0/23, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+200  enet  100200     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+BANANA#show vlan id 200   510
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+510  management                       active    Fa0/23, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+510  enet  100510     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+BANANA#show vlan id 5100  30
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+530  routing                          active    Fa0/22, Fa0/23, Fa0/24
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+530  enet  100530     1500  -      -      -        -    -        0      0   
+
+Remote SPAN VLAN
+----------------
+Disabled
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+BANANA#
