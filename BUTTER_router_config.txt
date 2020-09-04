@@ -1,0 +1,205 @@
+
+BUTTER#e show v config
+Using 2374 out of 196600 bytes
+!
+! Last configuration change at 16:20:58 UTC Mon Jan 2 2006
+! NVRAM config last updated at 16:23:06 UTC Mon Jan 2 2006
+! NVRAM config last updated at 16:23:06 UTC Mon Jan 2 2006
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname BUTTER
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+!
+ --More--         !
+!
+ --More--         ip cef
+ip host ns1.greenernet.edu 10.254.252.225
+ --More--         ip host greenernet.edu ns ns1.greenernet.edu
+no ipv6 cef
+ --More--         !
+multilink bundle-name authenticated
+ --More--         !
+crypto pki token default removal timeout 0
+ --More--         !
+!
+ --More--         !
+!
+ --More--         license udi pid CISCO1841 sn FTX1105Z2J7
+!
+ --More--         redundancy
+!
+ --More--         !
+! 
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         interface FastEthernet0/0
+ description LAN
+ --More--          ip address 192.168.99.1 255.255.255.252
+ duplex auto
+ --More--          speed auto
+!
+ --More--         interface FastEthernet0/0.100
+ description VLAN100-EndDevices
+ --More--          encapsulation dot1Q 100
+ ip address 10.254.252.225 255.255.255.224
+ --More--          standby 0 ip 10.254.252.227
+ standby 0 priority 10
+ --More--         !
+interface FastEthernet0/0.200
+ --More--          description VLAN200-EndDevices
+ encapsulation dot1Q 200
+ --More--          ip address 10.254.252.193 255.255.255.224
+!
+ --More--         interface FastEthernet0/0.510
+ description VLAN510-MGMT
+ --More--          encapsulation dot1Q 510
+ ip address 10.254.253.241 255.255.255.248
+ --More--         !
+interface FastEthernet0/0.530
+ --More--          description VLAN530-RTNG
+ encapsulation dot1Q 530
+ --More--          ip address 10.254.253.233 255.255.255.248
+ ip rip send version 2
+ --More--          ip rip receive version 2
+!
+ --More--         interface FastEthernet0/1
+ description WAN
+ --More--          ip address 10.254.253.253 255.255.255.252
+ ip rip send version 2
+ --More--          ip rip receive version 2
+ duplex auto
+ --More--          speed auto
+ no mop enabled
+ --More--         !
+interface Serial0/0/0
+ --More--          no ip address
+ shutdown
+ --More--          clock rate 125000
+!
+ --More--         interface Serial0/0/1
+ no ip address
+ --More--          shutdown
+ clock rate 125000
+ --More--         !
+router rip
+ --More--          version 2
+ passive-interface FastEthernet0/0.100
+ --More--          passive-interface FastEthernet0/0.200
+ passive-interface FastEthernet0/0.510
+ --More--          network 10.0.0.0
+ neighbor 10.254.253.235
+ --More--          neighbor 10.254.253.234
+ neighbor 10.254.253.254
+ --More--          no auto-summary
+!
+ --More--         ip forward-protocol nd
+no ip http server
+ --More--         no ip http secure-server
+!
+ --More--         !
+ip dns server
+ --More--         ip dns primary greenernet.edu soa ns1.greenernet.edu mb1.greenernet.edu 21600 900 7776000 86400
+ --More--         ip route 0.0.0.0 0.0.0.0 10.254.253.232
+ip route 0.0.0.0 0.0.0.0 10.254.253.252
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+control-plane
+ --More--         !
+!
+ --More--         !
+line con 0
+ --More--         line aux 0
+line vty 0 4
+ --More--          login
+ transport input all
+ --More--         !
+scheduler allocate 20000 1000
+ --More--         end
+
+BUTTER#
+BUTTER#show vlans
+
+Virtual LAN ID:  1 (IEEE 802.1Q Encapsulation)
+
+   vLAN Trunk Interface:   FastEthernet0/0
+
+ This is configured as native Vlan for the following interface(s) :
+FastEthernet0/0
+
+   Protocols Configured:   Address:              Received:        Transmitted:
+           IP              192.168.99.1                 0                   0
+        Other                                           0                 899
+
+   374 packets, 63993 bytes input
+   899 packets, 64046 bytes output
+
+Virtual LAN ID:  530 (IEEE 802.1Q Encapsulation)
+
+   vLAN Trunk Interface:   FastEthernet0/0.530
+
+   Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.253.233            1068                 802
+        Other                                           0                   9
+
+   1068 packets, 117336 bytes input
+ --More--            811 packets, 104614 bytes output
+
+ --More--         Virtual LAN ID:  100 (IEEE 802.1Q Encapsulation)
+
+ --More--            vLAN Trunk Interface:   FastEthernet0/0.100
+
+ --More--            Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.252.225            3000                2734
+ --More--                 Other                                           0                   7
+
+ --More--            3000 packets, 197448 bytes input
+   2741 packets, 180754 bytes output
+ --More--         
+Virtual LAN ID:  200 (IEEE 802.1Q Encapsulation)
+ --More--         
+   vLAN Trunk Interface:   FastEthernet0/0.200
+ --More--         
+   Protocols Configured:   Address:              Received:        Transmitted:
+ --More--                    IP              10.254.252.193               0                   0
+        Other                                           0                   4
+ --More--         
+   0 packets, 0 bytes input
+ --More--            4 packets, 184 bytes output
+
+ --More--         Virtual LAN ID:  510 (IEEE 802.1Q Encapsulation)
+
+ --More--            vLAN Trunk Interface:   FastEthernet0/0.510
+
+ --More--            Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.253.241               1                   0
+ --More--                 Other                                           0                   4
+
+ --More--            1 packets, 64 bytes input
+   4 packets, 184 bytes output
+ --More--         
+BUTTER#
+BUTTER#
+BUTTER#

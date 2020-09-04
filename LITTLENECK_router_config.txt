@@ -1,0 +1,207 @@
+
+LITTLENECK>enable
+LITTLENECK#show cinf   onfig
+Using 2078 out of 196600 bytes
+!
+! Last configuration change at 02:18:04 UTC Thu Feb 8 2018
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname LITTLENECK
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+!
+!
+!
+ --More--         ip cef
+ip domain name greenernet.edu
+ --More--         ip name-server 10.254.252.225
+no ipv6 cef
+ --More--         !
+multilink bundle-name authenticated
+ --More--         !
+crypto pki token default removal timeout 0
+ --More--         !
+!
+ --More--         !
+!
+ --More--         license udi pid CISCO1841 sn FTX160280N9
+!
+ --More--         redundancy
+!
+ --More--         !
+! 
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         interface FastEthernet0/0
+ description LAN
+ --More--          ip address 192.168.99.1 255.255.255.252
+ duplex auto
+ --More--          speed auto
+!
+ --More--         interface FastEthernet0/0.300
+ description VLAN300-EndDevices
+ --More--          encapsulation dot1Q 300
+ ip address 10.254.252.162 255.255.255.224
+ --More--         !
+interface FastEthernet0/0.400
+ --More--          description VLAN400-EndDevices
+ encapsulation dot1Q 400
+ --More--          ip address 10.254.252.130 255.255.255.224
+!
+ --More--         interface FastEthernet0/0.520
+ description VLAN520-MGMT
+ --More--          encapsulation dot1Q 520
+ ip address 10.254.253.226 255.255.255.248
+ --More--         !
+interface FastEthernet0/0.540
+ --More--          description VLAN540-RTNG
+ encapsulation dot1Q 540
+ --More--          ip address 10.254.253.218 255.255.255.248
+!
+ --More--         interface FastEthernet0/1
+ description WAN
+ --More--          ip address 10.254.253.250 255.255.255.252
+ ip rip send version 2
+ --More--          ip rip receive version 2
+ duplex auto
+ --More--          speed auto
+ no mop enabled
+ --More--         !
+interface Serial0/0/0
+ --More--          no ip address
+ shutdown
+ --More--          clock rate 125000
+!
+ --More--         interface Serial0/0/1
+ no ip address
+ --More--          shutdown
+ clock rate 125000
+ --More--         !
+interface Serial0/1/0
+ --More--          no ip address
+ shutdown
+ --More--          clock rate 125000
+!
+ --More--         interface Serial0/1/1
+ no ip address
+ --More--          shutdown
+ clock rate 125000
+ --More--         !
+router rip
+ --More--          version 2
+ passive-interface FastEthernet0/0.300
+ --More--          passive-interface FastEthernet0/0.400
+ passive-interface FastEthernet0/0.520
+ --More--          network 10.0.0.0
+ neighbor 10.254.253.219
+ --More--          neighbor 10.254.253.217
+ neighbor 10.254.253.249
+ --More--          no auto-summary
+!
+ --More--         ip forward-protocol nd
+no ip http server
+ --More--         no ip http secure-server
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         !
+!
+ --More--         control-plane
+!
+ --More--         !
+!
+ --More--         line con 0
+line aux 0
+ --More--         line vty 0 4
+ login
+ --More--          transport input all
+!
+ --More--         scheduler allocate 20000 1000
+end
+ --More--         
+LITTLENECK#
+LITTLENECK#
+LITTLENECK#
+LITTLENECK#shwo    ow l vlans
+
+Virtual LAN ID:  1 (IEEE 802.1Q Encapsulation)
+
+   vLAN Trunk Interface:   FastEthernet0/0
+
+ This is configured as native Vlan for the following interface(s) :
+FastEthernet0/0
+
+   Protocols Configured:   Address:              Received:        Transmitted:
+           IP              192.168.99.1                 0                   0
+        Other                                           0                 874
+
+   362 packets, 60682 bytes input
+   874 packets, 64777 bytes output
+
+Virtual LAN ID:  520 (IEEE 802.1Q Encapsulation)
+
+   vLAN Trunk Interface:   FastEthernet0/0.520
+
+   Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.253.226               0                   0
+        Other                                           0                   4
+
+   0 packets, 0 bytes input
+ --More--            4 packets, 184 bytes output
+
+ --More--         Virtual LAN ID:  540 (IEEE 802.1Q Encapsulation)
+
+ --More--            vLAN Trunk Interface:   FastEthernet0/0.540
+
+ --More--            Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.253.218               0                 261
+ --More--                 Other                                           0                 524
+
+ --More--            0 packets, 0 bytes input
+   785 packets, 57974 bytes output
+ --More--         
+Virtual LAN ID:  300 (IEEE 802.1Q Encapsulation)
+ --More--         
+   vLAN Trunk Interface:   FastEthernet0/0.300
+ --More--         
+   Protocols Configured:   Address:              Received:        Transmitted:
+ --More--                    IP              10.254.252.162               0                   0
+        Other                                           0                   4
+ --More--         
+   0 packets, 0 bytes input
+ --More--            4 packets, 184 bytes output
+
+ --More--         Virtual LAN ID:  400 (IEEE 802.1Q Encapsulation)
+
+ --More--            vLAN Trunk Interface:   FastEthernet0/0.400
+
+ --More--            Protocols Configured:   Address:              Received:        Transmitted:
+           IP              10.254.252.130               0                   0
+ --More--                 Other                                           0                   4
+
+ --More--            0 packets, 0 bytes input
+   4 packets, 184 bytes output
+ --More--         
+LITTLENECK#
+LITTLENECK#A 
