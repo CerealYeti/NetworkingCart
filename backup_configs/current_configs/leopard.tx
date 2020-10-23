@@ -1,0 +1,163 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2020.10.23 14:19:58 =~=~=~=~=~=~=~=~=~=~=~=
+
+LEOPARD>enable  
+LEOPARD#show run
+Building configuration...
+
+Current configuration : 3651 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname LEOPARD
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip subnet-zero
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1658001280
+ enrollment selfsigned
+ --More--          subject-name cn=IOS-Self-Signed-Certificate-1658001280
+ revocation-check none
+ rsakeypair TP-self-signed-1658001280
+!
+!
+crypto pki certificate chain TP-self-signed-1658001280
+ certificate self-signed 01
+  30820240 308201A9 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31363538 30303132 3830301E 170D3933 30333031 30303030 
+  35305A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 36353830 
+  30313238 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100BE69 DFA695D6 749F001E 8A985B57 45579CDB 4D51FB47 EB138C8C 68F188E1 
+  886ADD44 352FDA3A 2ABE9754 4B1C6AE3 570220EF 1968BF98 8239B8F7 A75C9299 
+  1F12FB77 6D1C3391 D9FA20BF B9C34EB0 9467FE4D CEFB0BA4 722D1843 52241F02 
+  802951F0 6A7FE180 743BF4F3 03223B2A FBA45097 3DF118C9 5EFF2D55 89D95C50 
+  27A30203 010001A3 68306630 0F060355 1D130101 FF040530 030101FF 30130603 
+  551D1104 0C300A82 084C454F 50415244 2E301F06 03551D23 04183016 80142632 
+  C14B345C 65F8DEAC 39A949CA 52048124 2C90301D 0603551D 0E041604 142632C1 
+  4B345C65 F8DEAC39 A949CA52 0481242C 90300D06 092A8648 86F70D01 01040500 
+  03818100 8F55F336 27312E9C D4C86EE8 7634FE8A D1EE1A07 A0792786 73CD0C5F 
+  90AAD5A7 1ED0357D B9C1868B 40C06AB8 A5912E35 6032426D 9821C991 C789D0C4 
+ --More--           FA2E17A0 386F8AD7 134C9BD0 CDB3F7CD 748144D8 19AFCA92 E35F5814 E0D932FC 
+  4F154344 B90FAB2D DBECD1E6 0171ADD2 703FFA1B 17359858 90AED55E E15DA57E EB140439
+  quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 300
+!
+interface FastEthernet0/2
+ switchport access vlan 300
+!
+interface FastEthernet0/3
+ --More--          switchport access vlan 300
+!
+interface FastEthernet0/4
+ switchport access vlan 300
+!
+interface FastEthernet0/5
+ switchport access vlan 300
+!
+interface FastEthernet0/6
+ switchport access vlan 300
+!
+interface FastEthernet0/7
+ switchport access vlan 300
+!
+interface FastEthernet0/8
+ switchport access vlan 300
+!
+interface FastEthernet0/9
+ switchport access vlan 300
+!
+interface FastEthernet0/10
+ switchport access vlan 300
+!
+ --More--         interface FastEthernet0/11
+ switchport access vlan 400
+!
+interface FastEthernet0/12
+ switchport access vlan 400
+!
+interface FastEthernet0/13
+ switchport access vlan 400
+!
+interface FastEthernet0/14
+ switchport access vlan 400
+!
+interface FastEthernet0/15
+ switchport access vlan 400
+!
+interface FastEthernet0/16
+ switchport access vlan 400
+!
+interface FastEthernet0/17
+ switchport access vlan 400
+!
+interface FastEthernet0/18
+ switchport access vlan 400
+ --More--         !
+interface FastEthernet0/19
+ switchport access vlan 400
+!
+interface FastEthernet0/20
+ switchport access vlan 400
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+ switchport mode trunk
+!
+interface FastEthernet0/23
+ switchport mode trunk
+!
+interface FastEthernet0/24
+ switchport mode trunk
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ --More--          no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan520
+ ip address 10.254.253.227 255.255.255.248
+ no ip route-cache
+!
+ip http server
+ip http secure-server
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

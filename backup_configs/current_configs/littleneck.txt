@@ -1,0 +1,124 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2020.10.23 14:25:41 =~=~=~=~=~=~=~=~=~=~=~=
+
+LITTLENECK>enable
+LITTLENECK#show run
+Building configuration...
+
+Current configuration : 1529 bytes
+!
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname LITTLENECK
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO1841 sn FTX160280N9
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+duplex auto
+ speed auto
+!
+interface FastEthernet0/0.400
+ encapsulation dot1Q 400
+ ip address 10.254.252.129 255.255.255.224
+!
+interface FastEthernet0/0.520
+ encapsulation dot1Q 520
+ ip address 10.254.253.226 255.255.255.248
+!
+interface FastEthernet0/0.540
+ encapsulation dot1Q 540
+ ip address 10.254.253.218 255.255.255.248
+!
+interface FastEthernet0/1
+ ip address 10.254.253.250 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ no fair-queue
+clock rate 125000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 125000
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+ clock rate 125000
+!
+interface Serial0/1/1
+ no ip address
+ shutdown
+ clock rate 125000
+!
+!
+router eigrp 1
+ network 10.0.0.0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ --More--         !
+!
+ip route 10.254.252.192 255.255.255.224 10.254.253.219
+ip route 10.254.252.224 255.255.255.224 10.254.253.219
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input all
+!
+scheduler allocate 20000 1000
+end

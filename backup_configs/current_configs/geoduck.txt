@@ -1,0 +1,172 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2020.10.23 14:15:28 =~=~=~=~=~=~=~=~=~=~=~=
+
+GEODUCK>enable  
+GEODUCK#show run
+Building configuration...
+
+Current configuration : 3802 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname GEODUCK
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip routing
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-262443648
+ enrollment selfsigned
+ --More--          subject-name cn=IOS-Self-Signed-Certificate-262443648
+ revocation-check none
+ rsakeypair TP-self-signed-262443648
+!
+!
+crypto pki certificate chain TP-self-signed-262443648
+ certificate self-signed 01
+  3082023D 308201A6 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32363234 34333634 38301E17 0D393330 33303130 30303035 
+  345A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3236 32343433 
+  36343830 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100 
+  CD6C5821 D016DCA0 193310CD 5473D3F0 A3FA693F 7D04939F 3745117A 736FA7F3 
+  41E16364 949FA5BF 3D4AFB5D 6F02F651 30E7036C C64D940E EF86F5FB 101CB5B2 
+  4B30968F CBA0E941 B9303ED4 ECC49735 EFC5C5EA BD151CC6 B6DF42ED 6A741119 
+  85707C4B E3E3B754 AA63E7FB E5258735 6C644784 EAF41862 EE016762 24565FFD 
+  02030100 01A36730 65300F06 03551D13 0101FF04 05300301 01FF3012 0603551D 
+  11040B30 09820747 454F4455 434B301F 0603551D 23041830 16801409 4C27AD6C 
+  78C28037 E3396EB7 641AEAD2 47BA0930 1D060355 1D0E0416 0414094C 27AD6C78 
+  C28037E3 396EB764 1AEAD247 BA09300D 06092A86 4886F70D 01010405 00038181 
+  0052D174 A8EAB401 8754DD25 07D44493 31AD0CC3 527A8479 6BDD3267 B41E1627 
+  62CAC794 888F3D93 7DBF8AC3 3E3A7EBC 447908A5 3E435830 C47643DA E4F03597 
+  BDBBEF90 5E69505A 1E5CCFB5 4C83F247 3BDC4D0F 4DA5E895 EA17DA6A E1E8C4D9 
+ --More--           E7B68E88 537DA4B5 2AAA01ED F1C87C8D 0F128E20 A69887A9 76D102DB 5EAD6C8D 88
+  quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 300
+!
+interface FastEthernet0/2
+ switchport access vlan 300
+!
+interface FastEthernet0/3
+ switchport access vlan 300
+!
+ --More--         interface FastEthernet0/4
+ switchport access vlan 300
+!
+interface FastEthernet0/5
+ switchport access vlan 300
+!
+interface FastEthernet0/6
+ switchport access vlan 300
+!
+interface FastEthernet0/7
+ switchport access vlan 300
+!
+interface FastEthernet0/8
+ switchport access vlan 300
+!
+interface FastEthernet0/9
+ switchport access vlan 300
+!
+interface FastEthernet0/10
+ switchport access vlan 300
+!
+interface FastEthernet0/11
+ switchport access vlan 400
+!
+ --More--         interface FastEthernet0/12
+ switchport access vlan 400
+!
+interface FastEthernet0/13
+ switchport access vlan 400
+!
+interface FastEthernet0/14
+ switchport access vlan 400
+!
+interface FastEthernet0/15
+ switchport access vlan 400
+!
+interface FastEthernet0/16
+ switchport access vlan 400
+!
+interface FastEthernet0/17
+ switchport access vlan 400
+!
+interface FastEthernet0/18
+ switchport access vlan 400
+!
+interface FastEthernet0/19
+ switchport access vlan 400
+!
+interface FastEthernet0/20
+ switchport access vlan 400
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+ no switchport
+ ip address 10.254.253.235 255.255.255.248
+!
+interface FastEthernet0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan520
+ ip address 10.254.253.228 255.255.255.248
+ --More--         !
+interface Vlan540
+ ip address 10.254.253.219 255.255.255.248
+!
+!
+router eigrp 1
+ network 10.0.0.0
+ eigrp stub connected static summary redistributed
+!
+ip http server
+ip http secure-server
+!
+!
+logging esm config
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end
