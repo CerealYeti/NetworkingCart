@@ -26,7 +26,7 @@ ip subnet-zero
 !
 crypto pki trustpoint TP-self-signed-2439728896
  enrollment selfsigned
- --More--          subject-name cn=IOS-Self-Signed-Certificate-2439728896
+subject-name cn=IOS-Self-Signed-Certificate-2439728896
  revocation-check none
  rsakeypair TP-self-signed-2439728896
 !
@@ -49,7 +49,7 @@ crypto pki certificate chain TP-self-signed-2439728896
   885E92B1 80E5421D 7E98F26D F7FDDF80 300D0609 2A864886 F70D0101 04050003 
   818100A4 D948DD51 C54DCED3 C6D5A2E4 2BC345A9 F7F4AF6D ACA15FF0 86E6C3DF 
   9E89A465 1F24160C 148B8F8A CBE31C69 7C0EDC51 C4753008 47878CCA 871E00DE 
- --More--           61D1FAFE B4C9A7F5 7C07D48D AA5436DC 8AB662FD 7751BE33 6AB09970 4230721B 
+  61D1FAFE B4C9A7F5 7C07D48D AA5436DC 8AB662FD 7751BE33 6AB09970 4230721B 
   C50CA4F8 6CEB7C12 947917F2 6BF4B00C B74E08A0 0BC90FB4 E0F2BC4D 06E3E83E 5FDD80
   quit
 !
@@ -72,7 +72,7 @@ interface FastEthernet0/2
 !
 interface FastEthernet0/3
  switchport access vlan 100
- --More--         !
+!
 interface FastEthernet0/4
  switchport access vlan 100
 !
@@ -95,7 +95,7 @@ interface FastEthernet0/10
  switchport access vlan 100
 !
 interface FastEthernet0/11
- --More--          switchport access vlan 200
+ switchport access vlan 200
 !
 interface FastEthernet0/12
  switchport access vlan 200
@@ -141,7 +141,7 @@ interface GigabitEthernet0/1
 interface GigabitEthernet0/2
 !
 interface Vlan1
- --More--          no ip address
+ no ip address
  no ip route-cache
 !
 interface Vlan510
