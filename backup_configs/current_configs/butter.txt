@@ -1,6 +1,5 @@
 =~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2020.10.23 14:22:19 =~=~=~=~=~=~=~=~=~=~=~=
 
-BUTTER>enable  
 BUTTER#show run
 Building configuration...
 
@@ -74,7 +73,7 @@ interface FastEthernet0/1
 interface Serial0/0/0
  no ip address
  shutdown
- --More--          clock rate 125000
+ clock rate 125000
 !
 interface Serial0/0/1
  no ip address
@@ -98,7 +97,7 @@ ip route 10.254.252.160 255.255.255.224 10.254.253.235
 !
 !
 !
- --More--         !
+!
 control-plane
 !
 !
@@ -111,3 +110,4 @@ line vty 0 4
 !
 scheduler allocate 20000 1000
 end
+Warning: Permanently added '10.254.253.241' (RSA) to the list of known hosts.

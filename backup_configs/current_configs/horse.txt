@@ -75,7 +75,7 @@ interface Serial0/0/0
  no ip address
  shutdown
  clock rate 125000
- --More--         !
+!
 interface Serial0/0/1
  no ip address
  shutdown
