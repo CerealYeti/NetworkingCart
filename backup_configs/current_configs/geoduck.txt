@@ -27,7 +27,7 @@ ip routing
 !
 crypto pki trustpoint TP-self-signed-262443648
  enrollment selfsigned
- --More--          subject-name cn=IOS-Self-Signed-Certificate-262443648
+subject-name cn=IOS-Self-Signed-Certificate-262443648
  revocation-check none
  rsakeypair TP-self-signed-262443648
 !
@@ -51,7 +51,7 @@ crypto pki certificate chain TP-self-signed-262443648
   0052D174 A8EAB401 8754DD25 07D44493 31AD0CC3 527A8479 6BDD3267 B41E1627 
   62CAC794 888F3D93 7DBF8AC3 3E3A7EBC 447908A5 3E435830 C47643DA E4F03597 
   BDBBEF90 5E69505A 1E5CCFB5 4C83F247 3BDC4D0F 4DA5E895 EA17DA6A E1E8C4D9 
- --More--           E7B68E88 537DA4B5 2AAA01ED F1C87C8D 0F128E20 A69887A9 76D102DB 5EAD6C8D 88
+  E7B68E88 537DA4B5 2AAA01ED F1C87C8D 0F128E20 A69887A9 76D102DB 5EAD6C8D 88
   quit
 !
 !
@@ -75,7 +75,7 @@ interface FastEthernet0/2
 interface FastEthernet0/3
  switchport access vlan 300
 !
- --More--         interface FastEthernet0/4
+interface FastEthernet0/4
  switchport access vlan 300
 !
 interface FastEthernet0/5
@@ -99,7 +99,7 @@ interface FastEthernet0/10
 interface FastEthernet0/11
  switchport access vlan 400
 !
- --More--         interface FastEthernet0/12
+interface FastEthernet0/12
  switchport access vlan 400
 !
 interface FastEthernet0/13
@@ -147,7 +147,7 @@ interface Vlan1
 !
 interface Vlan520
  ip address 10.254.253.228 255.255.255.248
- --More--         !
+!
 interface Vlan540
  ip address 10.254.253.219 255.255.255.248
 !

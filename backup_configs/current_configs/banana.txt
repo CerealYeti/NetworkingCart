@@ -26,7 +26,11 @@ ip subnet-zero
 !
 crypto pki trustpoint TP-self-signed-2439728896
  enrollment selfsigned
+<<<<<<< HEAD
  subject-name cn=IOS-Self-Signed-Certificate-2439728896
+=======
+subject-name cn=IOS-Self-Signed-Certificate-2439728896
+>>>>>>> c2a34a0132bf76f146eaba824789b94b7fcd063e
  revocation-check none
  rsakeypair TP-self-signed-2439728896
 !
@@ -72,7 +76,7 @@ interface FastEthernet0/2
 !
 interface FastEthernet0/3
  switchport access vlan 100
- --More--         !
+!
 interface FastEthernet0/4
  switchport access vlan 100
 !

@@ -73,7 +73,11 @@ interface FastEthernet0/1
 interface Serial0/0/0
  no ip address
  shutdown
+<<<<<<< HEAD
  clock rate 125000
+=======
+clock rate 125000
+>>>>>>> c2a34a0132bf76f146eaba824789b94b7fcd063e
 !
 interface Serial0/0/1
  no ip address
