@@ -4,7 +4,7 @@ Password:
 LEOPARD#show run
 Building configuration...
 
-Current configuration : 3898 bytes
+Current configuration : 3981 bytes
 !
 version 12.2
 no service pad
@@ -55,8 +55,7 @@ crypto pki certificate chain TP-self-signed-1658001280
   66A81100 27E4150E 8CC0BD38 59A09FF1 E91AC89B B7FA2F24 3A76ADDE C69E36FA 
   CADF89C9 54816A59 2DE839DF CB960A95 961C4DF4 54733207 39430EA2 5D6B856D 
   1586DEC8 B36927F2 5664C3D2 8336D14B 88748699 04BADA87
- quit
-!
+  quit
 !
 !
 !
@@ -64,10 +63,6 @@ crypto pki certificate chain TP-self-signed-1658001280
 spanning-tree mode pvst
 spanning-tree extend system-id
 !
-!
-!
-!
-! 
 vlan internal allocation policy ascending
 !
 ip ssh time-out 90
@@ -172,4 +167,7 @@ line vty 0 4
 line vty 5 15
  login
 !
+!
+monitor session 3 source vlan 300
+monitor session 3 destination interface Fa0/21
 end

@@ -1,8 +1,9 @@
-
 GEODUCK#show run
 Building configuration...
 
-Current configuration : 4051 bytes
+Current configuration : 4293 bytes
+!
+! Last configuration change at 00:31:29 UTC Mon Mar 1 1993 by admin
 !
 version 12.2
 no service pad
@@ -54,7 +55,7 @@ crypto pki certificate chain TP-self-signed-262443648
   7F47A45B 9CE1A315 98341082 B40422CE AF6285E4 199500E6 150F6683 2CBFC677 
   4BAF9029 F8CA485E DE9B0CDE D951C522 A90DD8ED 7A8117B3 5F48E6DE CEF009C2 
   5BC1AF6D A98526F6 451BBC54 D4F73B43 57C7F942 8246
-  	quit
+  quit
 !
 !
 !
@@ -107,7 +108,7 @@ interface FastEthernet0/11
 interface FastEthernet0/12
  switchport access vlan 400
 !
-interface FastEthernet0/13
+ interface FastEthernet0/13
  switchport access vlan 400
 !
 interface FastEthernet0/14
@@ -175,4 +176,9 @@ line vty 0 4
 line vty 5 15
  login
 !
+!
+monitor session 2 source interface Fa0/23
+monitor session 2 destination interface Fa0/22
+monitor session 4 source vlan 400
+monitor session 4 destination interface Fa0/21
 end
