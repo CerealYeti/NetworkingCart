@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 BANANA#show run
 Building configuration...
 
 Current configuration : 4003 bytes
+=======
+﻿
+BANANA>enable
+Password: 
+BANANA#show run
+Building configuration...
+
+Current configuration : 3914 bytes
+>>>>>>> 09c7c02e4374d8445b3fde2b8d7bba6690111230
 !
 version 12.2
 no service pad
@@ -68,7 +78,7 @@ ip ssh version 2
 !
 !
 interface FastEthernet0/1
- switchport access vlan 100
+switchport access vlan 100
 !
 interface FastEthernet0/2
  switchport access vlan 100
@@ -137,7 +147,7 @@ interface FastEthernet0/23
  switchport mode trunk
 !
 interface FastEthernet0/24
- switchport mode trunk
+switchport mode trunk
 !
 interface GigabitEthernet0/1
 !
@@ -168,3 +178,5 @@ line vty 5 15
 monitor session 1 source vlan 100 , 200
 monitor session 1 destination interface Fa0/21
 end
+                                                                                                       $                                                                                                                                                                                 
+BANANA#exit
